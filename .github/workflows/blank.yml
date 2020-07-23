@@ -27,4 +27,4 @@ jobs:
         shell: bash        
         run: |
           # Get secrets
-          echo "::set-output name=AWS_ACCOUNT_ID::$(cat SECRET.json | jq -r '.AWS_ACCOUNT_ID')
+          echo "::set-output name=AWS_ACCOUNT_ID::$(cat SECRET.json | jq -r '.AWS_ACCOUNT_ID')"
