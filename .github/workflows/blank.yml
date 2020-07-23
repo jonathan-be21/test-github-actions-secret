@@ -16,8 +16,9 @@ jobs:
     #needs: ["prepare"]
     runs-on: ubuntu-latest
     outputs:
-      AWS_ACCOUNT_ID:      ${{ steps.retrieve_secrets.outputs.AWS_ACCOUNT_ID }}   
-    
+      AWS_ACCOUNT_ID:      ${{ steps.retrieve_secrets.outputs.AWS_ACCOUNT_ID }}
+      ECR:        ${{ steps.retrieve_secrets.outputs.ECR }} 
+      
     steps:      
       - name: "Checkout current repo"
         uses: actions/checkout@v2
@@ -28,3 +29,4 @@ jobs:
         run: |
           # Get secrets
           echo "::set-output name=AWS_ACCOUNT_ID::$(cat SECRET.json | jq -r '.AWS_ACCOUNT_ID')"
+          echo "::set-output name=ECR::$(cat SECRET.json | jq -r '.ECR')"
